@@ -1,3 +1,4 @@
+// This file is a duplicate and will be removed.
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { Table, Spin, Typography, Input } from 'antd';
