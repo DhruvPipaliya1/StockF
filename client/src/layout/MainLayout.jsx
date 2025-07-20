@@ -7,15 +7,19 @@ import {
   VideoCameraOutlined,
 } from '@ant-design/icons';
 import { Button, Layout, Menu, theme } from 'antd';
+import { Outlet, useNavigate, useLocation } from 'react-router-dom';
 import './MainLayout.css';
 
 const { Header, Sider, Content } = Layout;
 
-const MainLayout = ({ children, onLogout, navKey = '1', onNavChange }) => {
+const MainLayout = ({ onLogout }) => {
   const [collapsed, setCollapsed] = useState(false);
+  const navigate = useNavigate();
+  const location = useLocation();
   const {
     token: { colorBgContainer, borderRadiusLG },
   } = theme.useToken();
+
   return (
     <Layout>
       <Sider trigger={null} collapsible collapsed={collapsed}>
@@ -23,29 +27,32 @@ const MainLayout = ({ children, onLogout, navKey = '1', onNavChange }) => {
         <Menu
           theme="dark"
           mode="inline"
-          selectedKeys={[navKey]}
-          onClick={({ key }) => onNavChange && onNavChange(key)}
+          selectedKeys={[location.pathname]}
+          onClick={({ key }) => navigate(key)}
           items={[
             {
-              key: '1',
+              key: '/backend/top50',
               icon: <UserOutlined />,
               label: 'Top Companies',
             },
             {
-              key: '2',
+              key: '/backend/all-companies',
               icon: <VideoCameraOutlined />,
               label: 'All Companies',
-            },
-            {
-              key: '3',
-              icon: <UploadOutlined />,
-              label: 'nav 3',
             },
           ]}
         />
       </Sider>
       <Layout>
-        <Header style={{ padding: 0, background: colorBgContainer, display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+        <Header
+          style={{
+            padding: 0,
+            background: colorBgContainer,
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'space-between',
+          }}
+        >
           <Button
             type="text"
             icon={collapsed ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />}
@@ -69,7 +76,7 @@ const MainLayout = ({ children, onLogout, navKey = '1', onNavChange }) => {
             borderRadius: borderRadiusLG,
           }}
         >
-          {children}
+          <Outlet /> {/* Renders Top50 or AllCompanies */}
         </Content>
       </Layout>
     </Layout>
