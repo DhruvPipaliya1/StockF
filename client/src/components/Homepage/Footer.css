@@ -1,0 +1,18 @@
+.bg-gradient-footer {
+  background: linear-gradient(to right, #1e3c72, #2a5298);
+}
+
+.footer {
+  color: #f0f0f0;
+}
+
+.footer-link {
+  color: #ffffff;
+  text-decoration: none;
+  font-size: 14px;
+}
+
+.footer-link:hover {
+  text-decoration: underline;
+  color: #b3d1ff;
+}

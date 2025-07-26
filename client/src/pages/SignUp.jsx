@@ -43,10 +43,10 @@ function SignUp({ onSignUpSuccess }) {
 
   return (
     <div className="login-container">
-      <h2>Sign Up</h2>
+      <h2 className="text-dark">Sign Up</h2>
       <form onSubmit={handleSubmit}>
         <div>
-          <label>Email:</label>
+          <label className="text-dark">Email:</label>
           <input
             type="email"
             value={email}
@@ -55,7 +55,7 @@ function SignUp({ onSignUpSuccess }) {
           />
         </div>
         <div>
-          <label>Password:</label>
+          <label className="text-dark">Password:</label>
           <input
             type="password"
             value={password}
@@ -68,7 +68,7 @@ function SignUp({ onSignUpSuccess }) {
           {loading ? "Signing up..." : "Sign Up"}
         </button>
       </form>
-      <div className="or-divider"><span>OR</span></div>
+      <div className="or-divider"><span className="text-dark">OR</span></div>
       <button type="button" className="google-btn" onClick={handleGoogleSignUp} disabled={loading}>
         <img src="https://developers.google.com/identity/images/g-logo.png" alt="Google" className="google-icon" />
         Sign up with Google

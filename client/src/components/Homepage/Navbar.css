@@ -1,0 +1,71 @@
+/* Transparent and glassy navbar background */
+.custom-navbar {
+  background: rgba(255, 255, 255, 0.05); /* glass feel */
+  backdrop-filter: blur(20px);
+  border-radius: 16px;
+  padding: 1rem 2rem;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+  margin: 1rem auto;
+  max-width: 1200px;
+  width: 95%;
+}
+
+/* Blue background behind entire page */
+body {
+  background: linear-gradient(135deg, #1e2a78, #0b132b);
+  background-attachment: fixed;
+  color: white;
+  font-family: 'Inter', sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+/* Logo size */
+.brand-logo {
+  height: 32px;
+}
+
+/* Nav links in pill style */
+.nav-pills-box {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 40px;
+  padding: 11px 12px;
+}
+
+.pill-link {
+  color: white;
+  text-decoration: none;
+  padding: 8px 18px;
+  border-radius: 40px;
+  font-weight: 500;
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+.pill-link:hover,
+.pill-link.active {
+  background: rgba(255, 255, 255, 0.25);
+  color: white;
+}
+
+/* Gradient style button (Sign in / Logout) */
+.btn-gradient {
+  background: linear-gradient(135deg, #4d9aff, #61d4ff);
+  color: white;
+  border: none;
+  font-weight: 600;
+}
+
+.btn-gradient:hover {
+  opacity: 0.9;
+}
+
+.btn-gradient-logout{
+    background: linear-gradient(135deg, #ff4d4d, #ff6161);
+    color: white;
+    border: none;
+    font-weight: 600;
+}
+
+.btn-gradient-logout:hover {
+  opacity: 0.9;
+}
