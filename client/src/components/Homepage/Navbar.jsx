@@ -1,39 +1,46 @@
 import React from 'react';
-import logo from '../../assets/images/logo.png';
+import Fulllogo from '../../assets/images/Full-logo.png';
+import { Link, useLocation  } from 'react-router-dom';
+import './Navbar.css';
 
-function Navbar({ onLogout, isLoggedIn }) {
+function Navbar({ isLoggedIn, onLogout }) {
+  const location = useLocation();
+
+  const isActive = (path) => location.pathname.startsWith(path);
+
   return (
-    <nav className="navbar navbar-expand-lg bg-body-tertiary">
+    <nav className="navbar navbar-expand-lg custom-navbar">
       <div className="container-fluid">
-        <a className="navbar-brand" href="/"><img src={logo} alt="Logo" style={{ height: '40px', width: 'auto' }}/></a>
-        <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent">
-          <span className="navbar-toggler-icon"></span>
-        </button>
+        <a className="navbar-brand d-flex align-items-center" href="/">
+          <img src={Fulllogo} alt="Logo" className="brand-logo me-2" />
+          <span className="fw-bold text-white">Magic Formula Screener</span>
+        </a>
 
-        <div className="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul className="navbar-nav me-auto mb-2 mb-lg-0">
-            <li className="nav-item">
-              <a className="nav-link active" href="/">Home</a>
-            </li>
-            <li className="nav-item">
-              <a className="nav-link" href="/backend/top50">Top 50</a>
-            </li>
-            <li className="nav-item">   
-              <a className="nav-link" href="/backend/all-companies">All Companies</a>
-            </li>
-          </ul>
-
-          <form className="d-flex align-items-center" role="search">
-            <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
-            <button className="btn btn-outline-success me-2" type="submit">Search</button>
-
-            {isLoggedIn && (
-              <button onClick={onLogout} className="btn btn-danger" type="button">
-                Logout
-              </button>
-            )}
-          </form>
+        <div class="d-none d-lg-flex flex-grow-1 justify-content-center">
+          <div class="nav-pills-box">
+            <a class="pill-link mx-1 active" href="/">Home</a>
+            <Link class="pill-link mx-1" to="/news">News</Link>
+            <Link
+              className={`pill-link mx-1 ${isActive('/backend') ? 'active' : ''}`}
+              to={isLoggedIn ? "/backend/top50" : "/login"}
+            >
+              Dashboard
+            </Link>
+          </div>
         </div>
+
+        {isLoggedIn ? (
+          <button onClick={onLogout} className="btn btn-danger btn-gradient-logout rounded-pill px-4">Logout</button>
+        ) : (
+           <>
+              <a href="/login" className="btn btn-gradient rounded-pill px-3 mx-2">
+                Login
+              </a>
+              <a href="/signup" className="btn btn-gradient rounded-pill px-3 mx-2">
+                Sign Up
+              </a>
+            </>
+        )}
       </div>
     </nav>
   );

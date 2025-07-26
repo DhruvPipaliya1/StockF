@@ -8,6 +8,7 @@ import {
 } from '@ant-design/icons';
 import { Button, Layout, Menu, theme } from 'antd';
 import { Outlet, useNavigate, useLocation } from 'react-router-dom';
+import logo from '../assets/images/logo.png'; 
 import './MainLayout.css';
 
 const { Header, Sider, Content } = Layout;
@@ -23,7 +24,14 @@ const MainLayout = ({ onLogout }) => {
   return (
     <Layout>
       <Sider trigger={null} collapsible collapsed={collapsed}>
-        <div className="demo-logo-vertical" />
+        <div className="demo-logo-vertical">
+        {collapsed ? (
+          <img src={logo} alt="Logo" style={{ width: 32, height: 32, marginBottom: 5 }} />
+        ) : (
+          'Magic Formula Screener'
+        )}
+      </div>
+
         <Menu
           theme="dark"
           mode="inline"
@@ -63,9 +71,14 @@ const MainLayout = ({ onLogout }) => {
               height: 64,
             }}
           />
-          <Button onClick={onLogout} type="primary" danger style={{ marginRight: 24 }}>
-            Logout
-          </Button>
+          <div style={{ marginRight: 24, display: 'flex', gap: 12 }}>
+            <Button type="default" onClick={() => navigate('/')}>
+              Back to Home
+            </Button>
+            <Button onClick={onLogout} type="primary" danger>
+              Logout
+            </Button>
+          </div>
         </Header>
         <Content
           style={{
@@ -76,7 +89,7 @@ const MainLayout = ({ onLogout }) => {
             borderRadius: borderRadiusLG,
           }}
         >
-          <Outlet /> {/* Renders Top50 or AllCompanies */}
+          <Outlet /> 
         </Content>
       </Layout>
     </Layout>

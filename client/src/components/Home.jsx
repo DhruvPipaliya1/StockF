@@ -2,7 +2,7 @@ import React from 'react';
 import Navbar from './Homepage/Navbar';
 
 function Home() {
-  const isLoggedIn = sessionStorage.getItem('isLoggedIn') === 'true'; // ✅ define it
+  const isLoggedIn = sessionStorage.getItem('isLoggedIn') === 'true'; 
 
   const handleLogout = () => {
     sessionStorage.removeItem('isLoggedIn');
@@ -16,6 +16,7 @@ function Home() {
       <div style={{ padding: '40px', textAlign: 'center' }}>
         <h1>Welcome to Magic Formula Screener</h1>
         <p>Explore financial data of top Indian companies.</p>
+        
       </div>
     </>
   );

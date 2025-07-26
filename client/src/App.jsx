@@ -9,6 +9,7 @@ import AllCompanies from './components/AllCompanies';
 import Login from './pages/Login';
 import SignUp from './pages/SignUp';
 import MainLayout from './layout/MainLayout';
+import News from './components/News/News.jsx';
 
 function PrivateRoute() {
   const isLoggedIn = sessionStorage.getItem('isLoggedIn') === 'true';
@@ -29,7 +30,7 @@ function App() {
 
   const handleLoginSuccess = () => {
     setLoggedIn(true);
-    navigate('/'); // ✅ redirect to /
+    navigate('/'); 
   };
 
   const handleLogout = async () => {
@@ -60,12 +61,13 @@ function App() {
         <Route element={<MainWrapper onLogout={handleLogout} />}>
           <Route path="top50" element={<Top50 />} />
           <Route path="all-companies" element={<AllCompanies />} />
-          <Route index element={<Navigate to="top50" replace />} /> {/* default: /backend → /backend/top50 */}
+          <Route index element={<Navigate to="top50" replace />} />
         </Route>
       </Route>
 
       {/* Home → redirect to /backend */}
       <Route path="/" element={<Home />} />
+      <Route path="/news" element={<News key="general" pageSize={5} />} />
 
       {/* Catch all unknown paths */}
       <Route path="*" element={<Navigate to="/" replace />} />
