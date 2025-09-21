@@ -23,6 +23,13 @@ def top_50():
     conn.close()
     return jsonify([dict(row) for row in rows])
 
+@app.route("/top3")
+def top_3():
+    conn = get_db_connection()
+    rows = conn.execute("SELECT * FROM magic_formula ORDER BY score ASC LIMIT 3").fetchall()
+    conn.close()
+    return jsonify([dict(row) for row in rows])
+
 @app.route("/all")
 def all_stocks():
     conn = get_db_connection()

@@ -1,0 +1,89 @@
+.titlepage-title1{
+    font-size: 4.4rem;
+    font-weight: 700;
+    margin: 0;
+    line-height: 1;
+}
+
+.titlepage-title2{
+    font-size: 4.4rem;
+    font-weight: 700;
+    background-image: linear-gradient(90deg, hsl(180deg 100% 63.19%), #0575e6, #ff00cc);
+    background-size: 200% 200%;
+    background-clip: text;
+    animation: gradient-shift 10s infinite;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin: 0;
+    line-height: 91px;
+}
+
+.titlepage-title-description{
+    font-size: 1.4rem;
+    color: #9f9fa8;
+}
+
+.first-future-title{
+    /* margin: 46px; */
+    margin-left: 50px;
+    margin-top: 105px;
+    width: 35rem;
+}
+
+body {
+  background-color: #1a1a2e; /* A deep purple/blue to match the image background */
+}
+
+.dark-background {
+  background-color: #3b82f680;
+  border-radius: 1.5rem;
+  padding: 2rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  margin-top: 2rem;
+}
+
+.dark-card {
+  background-color: #13131680;
+  border: 1px solid #33334d;
+  color: #fff;
+  transition: transform 0.2s ease-in-out;
+}
+
+.dark-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.card-gradient {
+  background: linear-gradient(135deg, #2a2a47, #1d1d36);
+  border: 1px solid #33334d;
+  box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+.crypto-icon {
+  width: 40px;
+  height: 40px;
+  font-size: 1.25rem;
+  font-weight: bold;
+  padding-top: 5px;
+}
+
+.text-success {
+  color: #55e0a0 !important; /* A vibrant green */
+}
+
+.text-secondary {
+  color: #9999a8 !important; /* Lighter grey for descriptions */
+}
+
+@keyframes gradient-shift {
+    0%{
+        background-position: 0% 50%;
+    }
+    50%{
+        background-position: 100% 50%;
+    }
+    100%{
+        background-position: 0% 50%;
+    }
+}

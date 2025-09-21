@@ -5,7 +5,7 @@ import { Table, Spin, Typography, Input, Space, Button, Alert } from 'antd';
 import { SearchOutlined } from '@ant-design/icons';
 
 const { Title } = Typography;
-
+  
 function Top50() {
   const [stocks, setStocks] = useState([]);
   const [loading, setLoading] = useState(true);

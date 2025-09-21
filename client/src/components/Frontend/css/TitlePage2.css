@@ -1,0 +1,52 @@
+.card-title{
+    font-weight: 600;
+    color: aliceblue;
+}
+
+.card-body{
+    transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+    border-radius: 15px;
+    overflow: hidden;
+}
+
+.card-body:hover{
+    transform: scale(1.1);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(100px);
+}
+
+.card-body:hover .card-title{
+    display: inline-block; /* make gradient apply properly */
+    background-image: linear-gradient(90deg, hsl(180deg 100% 63.19%), #0575e6, #ff00cc);
+    background-size: 200% 200%;
+    background-clip: text;
+    -webkit-background-clip: text; /* required for Chrome/Safari */
+    -webkit-text-fill-color: transparent; /* makes text transparent so gradient shows */
+    animation: gradient-shift 10s infinite linear;
+}
+
+.TP2-title{
+    display: inline-block; /* make gradient apply properly */
+    background-image: linear-gradient(90deg, hsl(180deg 100% 63.19%), #0575e6, #ff00cc);
+    background-size: 200% 200%;
+    background-clip: text;
+    -webkit-background-clip: text; /* required for Chrome/Safari */
+    -webkit-text-fill-color: transparent; /* makes text transparent so gradient shows */
+    animation: gradient-shift 10s infinite linear;
+    font-weight: 600;
+}
+.card-icon{
+    font-size: 20px;
+}
+
+@keyframes gradient-shift {
+    0%{
+        background-position: 0% 50%;
+    }
+    50%{
+        background-position: 100% 50%;
+    }
+    100%{
+        background-position: 0% 50%;
+    }
+}

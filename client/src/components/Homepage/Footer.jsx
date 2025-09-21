@@ -3,7 +3,7 @@ import './Footer.css';
 
 function Footer() {
   return (
-    <footer className="footer mt-auto py-3 bg-gradient-footer text-white">
+    <footer className="footer mt-auto py-3 bg-gradient-footer text-white mt-5">
       <div className="container text-center">
         <div className="row">
           <div className="col-md-4 mb-3 mb-md-0">

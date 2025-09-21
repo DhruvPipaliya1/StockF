@@ -1,5 +1,8 @@
 import React from 'react';
 import Navbar from './Homepage/Navbar';
+import TitlePage1 from './Frontend/TitlePage1';
+import TitlePage2 from './Frontend/TitlePage2';
+import Footer from './Homepage/Footer';
 
 function Home() {
   const isLoggedIn = sessionStorage.getItem('isLoggedIn') === 'true'; 
@@ -13,11 +16,9 @@ function Home() {
   return (
     <>
       <Navbar onLogout={handleLogout} isLoggedIn={isLoggedIn} />
-      <div style={{ padding: '40px', textAlign: 'center' }}>
-        <h1>Welcome to Magic Formula Screener</h1>
-        <p>Explore financial data of top Indian companies.</p>
-        
-      </div>
+      <TitlePage1/>
+      <TitlePage2/>
+      <Footer/>
     </>
   );
 }

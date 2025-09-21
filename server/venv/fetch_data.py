@@ -11,6 +11,9 @@ cur = conn.cursor()
 cur.execute("""
 CREATE TABLE IF NOT EXISTS magic_formula (
     symbol TEXT PRIMARY KEY,
+    name TEXT,
+    price REAL,
+    change REAL,
     ebit INTEGER,
     market_cap INTEGER,
     capital_employed INTEGER,
@@ -24,7 +27,7 @@ CREATE TABLE IF NOT EXISTS magic_formula (
 conn.commit()
 
 # Load and clean CSV
-df = pd.read_csv(r"C:\Users\HP\Desktop\Magic Formula\nifty500.csv")
+df = pd.read_csv(r"C:\Users\HP\Desktop\Magic Formuls\StockF\nifty500.csv")
 df.columns = df.columns.str.strip()
 df['SYMBOL'] = df['SYMBOL'].str.strip()
 tickers = [symbol + ".NS" for symbol in df['SYMBOL']]
@@ -60,10 +63,17 @@ def fetch(symbol):
         earnings_yield = ebit / market_cap
         roc = ebit / capital_employed
 
+        price = info.get("currentPrice")
+        change = info.get("regularMarketChangePercent")
+        name = info.get("longName")
+
         print(f"{symbol}: ✅ EY={earnings_yield:.4f}, ROC={roc:.4f}")
 
         return {
             'symbol': symbol,
+            'name' : name,
+            'price' : price,
+            'change' : change,
             'ebit': int(ebit),
             'market_cap': int(market_cap),
             'capital_employed': int(capital_employed),
@@ -85,7 +95,7 @@ with ThreadPoolExecutor(max_workers=20) as executor:
 
 # Convert to DataFrame
 df_result = pd.DataFrame(results)
-df_result.dropna(subset=['earnings_yield', 'roc'], inplace=True)
+df_result.dropna(subset=['earnings_yield', 'roc', 'price'], inplace=True)
 
 # Rank and score
 df_result['ey_rank'] = df_result['earnings_yield'].rank(ascending=False, method='min')

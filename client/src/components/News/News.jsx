@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { NewsItem } from './NewsItem.jsx';
 import { Spinner } from './Spinner.jsx';
+import Navbar from '../Homepage/Navbar';
 import InfiniteScroll from 'react-infinite-scroll-component';
 
 export class News extends Component {
@@ -49,9 +50,12 @@ export class News extends Component {
       this.updateNews();
     }
   };
+  
 
   render() {
     return (
+      <>
+      {/* <Navbar onLogout={handleLogout} isLoggedIn={isLoggedIn} /> */}
       <div className="container my-3">
         <h1 className="text-center" style={{ margin: '35px 0' }}>
           Business News - India
@@ -80,6 +84,7 @@ export class News extends Component {
           </div>
         </InfiniteScroll>
       </div>
+      </>
     );
   }
 }
